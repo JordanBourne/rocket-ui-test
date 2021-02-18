@@ -29,10 +29,7 @@ function MasterLayoutHOC(WrappedComponent, pageName) {
     dispatch
   });
 
-  return connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )(MasterLayoutImpl);
+  return MasterLayoutImpl;
 }
 
 export default MasterLayoutHOC;

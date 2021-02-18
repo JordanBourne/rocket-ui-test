@@ -1,9 +1,6 @@
-import axios from 'axios';
+import { SERVICES_URL, api } from './BaseService';
 
-const SERVICES_URL = 'https://api.spacexdata.com/v3';
 const serviceUrl = `${SERVICES_URL}/launches`;
-
-const api = axios.create();
 
 const launchService = {
   get: () => api.get(`${serviceUrl}`)
