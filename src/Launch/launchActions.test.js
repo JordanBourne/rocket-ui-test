@@ -1,7 +1,4 @@
 import { shouldFetchLaunches } from './launchActions';
-// import Adapter from 'enzyme-adapter-react-16';
-
-// configure({ adapter: new Adapter() });
 
 describe('Launches', () => {
   it('should fetch launches', () => {

@@ -1,7 +1,4 @@
-// import Adapter from 'enzyme-adapter-react-16';
 import { shouldFetchRocket } from './rocketActions';
-
-// configure({ adapter: new Adapter() });
 
 describe('Rockets', () => {
   it('should fetch rocket', () => {
