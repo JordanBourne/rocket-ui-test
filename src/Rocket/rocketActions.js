@@ -1,4 +1,4 @@
-import RocketService from '../services/RocketService';
+import RocketService from './rocketService';
 
 export const ACTIONS = {
   REQUEST_ROCKET: 'REQUEST_ROCKET',
@@ -17,19 +17,24 @@ const receiveRocket = (response, rocketId) => ({
   }
 });
 
-export const fetchRocketThunk = (rocketId) => {
+export const fetchRocketThunk = rocketId => {
   return (dispatch, getState) => {
-    const { rockets: { rocketDetails } } = getState();
-    return fetchRocketIfNeeded({ dispatch, rocketDetails, rocketId});
-  }
-}
+    const {
+      rockets: { rocketDetails }
+    } = getState();
+    return fetchRocketIfNeeded({ dispatch, rocketDetails, rocketId });
+  };
+};
 
 export const fetchRocket = (dispatch, rocketId) => {
   dispatch(requestRocket());
-  return RocketService.getRocket(rocketId).then(response => dispatch(receiveRocket(response, rocketId)));
+  return RocketService.getRocket(rocketId).then(response =>
+    dispatch(receiveRocket(response, rocketId))
+  );
 };
 
-export const shouldFetchRocket = (rocketDetails, rocketId) => !rocketDetails || (!rocketDetails.fetching && !rocketDetails[rocketId]);
+export const shouldFetchRocket = (rocketDetails, rocketId) =>
+  !rocketDetails || (!rocketDetails.fetching && !rocketDetails[rocketId]);
 
 export const fetchRocketIfNeeded = ({ dispatch, rocketDetails, rocketId }) =>
   shouldFetchRocket(rocketDetails, rocketId) && fetchRocket(dispatch, rocketId);

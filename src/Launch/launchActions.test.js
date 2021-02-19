@@ -1,4 +1,4 @@
-import { shouldFetchLaunches } from '../../actions/Launches';
+import { shouldFetchLaunches } from './launchActions';
 // import Adapter from 'enzyme-adapter-react-16';
 
 // configure({ adapter: new Adapter() });

@@ -1,4 +1,4 @@
-import { ACTIONS } from '../actions/Launches';
+import { ACTIONS } from './launchActions';
 
 const initialState = {
   launches: [],
@@ -17,5 +17,5 @@ const actionHandlers = {
   })
 };
 
-export default (state = initialState, action) => 
+export default (state = initialState, action) =>
   actionHandlers[action.type] ? actionHandlers[action.type]({ state, action }) : state;

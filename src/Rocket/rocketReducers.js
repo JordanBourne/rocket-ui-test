@@ -1,4 +1,4 @@
-import { ACTIONS } from '../actions/Rockets';
+import { ACTIONS } from './rocketActions';
 
 const initialState = {
   rocketsDetails: {},
@@ -14,11 +14,11 @@ const actionHandlers = {
     ...state,
     fetching: false,
     rocketDetails: {
-      ...state.rocketDetails, 
+      ...state.rocketDetails,
       [action.payload.rocketId]: action.payload.rocketDetails
     }
   })
 };
 
-export default (state = initialState, action) => 
+export default (state = initialState, action) =>
   actionHandlers[action.type] ? actionHandlers[action.type]({ state, action }) : state;

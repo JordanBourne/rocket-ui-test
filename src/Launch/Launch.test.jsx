@@ -2,7 +2,7 @@ import React from 'react';
 import { configure, mount } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import { Provider } from 'react-redux';
-import Launch from '../../components/Launch';
+import Launch from './Launch';
 
 
 configure({ adapter: new Adapter() });

@@ -1,15 +1,17 @@
 import React, { useEffect, useState } from 'react';
-import ConnectedView from './ConnectedView';
-import { fetchLaunchesThunk } from "../actions/Launches";
-import Launch from '../components/Launch';
 import { useDispatch, useSelector } from 'react-redux';
+
+import ConnectedView from '../Layout/ConnectedView';
+import { fetchLaunchesThunk } from './launchActions';
+import Launch from './Launch';
+import './launch.sass';
 
 const LaunchesView = () => {
   const [ expandedView, setExpandedView ] = useState('');
   const launchCollection = useSelector(state => state.launchCollection);
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(fetchLaunchesThunk())
+    dispatch(fetchLaunchesThunk());
   }, []);
 
   const getContent = () => {
@@ -22,7 +24,7 @@ const LaunchesView = () => {
     }
 
     return (
-      <ul>
+      <ul className="launchesContainer">
         {launchCollection.launches.map(launch => (
           <Launch {...{
             key: launch.flight_number + launch.mission_name,
@@ -37,7 +39,7 @@ const LaunchesView = () => {
 
   return (
     <div>
-      <h2> SpaceX launches </h2>
+      <h2 className="launchHeader"> SpaceX launches </h2>
       {getContent()}
     </div>
   );
